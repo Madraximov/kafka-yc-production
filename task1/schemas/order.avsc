@@ -1,0 +1,46 @@
+{
+  "type": "record",
+  "name": "Order",
+  "namespace": "com.demo.kafka",
+  "doc": "Order event schema for Kafka production cluster",
+  "fields": [
+    {
+      "name": "order_id",
+      "type": "string",
+      "doc": "Unique order identifier"
+    },
+    {
+      "name": "user_id",
+      "type": "string",
+      "doc": "User identifier"
+    },
+    {
+      "name": "amount",
+      "type": "double",
+      "doc": "Order total amount"
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "default": "UZS",
+      "doc": "Currency code"
+    },
+    {
+      "name": "status",
+      "type": {
+        "type": "enum",
+        "name": "OrderStatus",
+        "symbols": ["CREATED", "PAID", "CANCELLED"]
+      },
+      "doc": "Order status"
+    },
+    {
+      "name": "created_at",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      },
+      "doc": "Order creation time"
+    }
+  ]
+}
